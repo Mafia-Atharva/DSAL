@@ -1,0 +1,114 @@
+#include <iostream>
+#define size 10
+using namespace std;
+struct node{
+    long data;
+    node *next;
+};
+
+class Hashing{
+    private:
+    int i;
+    node *temp,*hashtable[size];
+    public:
+    Hashing()
+    {
+        for(i=0;i<10;i++)
+        hashtable[i]=NULL;
+    }
+    
+    void menu();
+    void insert();
+    void search();
+    void display();
+};
+
+int main() {
+    Hashing h1;
+    int ch;
+    while(true)
+    {
+    h1.menu();
+    cin>>ch;
+    switch(ch)
+    {
+        case 1:
+        h1.insert();
+        break;
+        case 2:
+        h1.display();
+        break;
+        case 3:
+        h1.search();
+        break;
+        case 4:
+        cout<<"Thank you for using this program";
+        exit(0);
+    }
+    }
+    return 0;
+}
+
+void Hashing::menu()
+{
+    cout<<"***********************MENU***********************";
+    cout<<"1.Insert telephone number\n2.Display Telephone numbers\n3.Search a number\n4.Stop\n";
+    cout<<"Enter your choice:";
+}
+
+void Hashing::insert()
+{
+    long teleno;
+    cout<<"Enter a telephone number:";
+    cin>>teleno;
+    node *p=new node;
+    p->data=teleno;
+    p->next=NULL;
+    int loc=teleno%size;
+    if(hashtable[loc]==NULL)
+    {hashtable[loc]=p;}
+    else
+    {
+        temp=hashtable[loc];
+        while(temp->next!=NULL)
+        {temp=temp->next;}
+        temp->next=p;
+    }
+}
+
+void display()
+{
+    node *q=new node;
+    for(i=0;i<size;i++)
+    {
+        q=hashtable[i];
+        if(q==NULL)
+        {
+            cout<<"Location"<<i+1<<":--";
+            continue;
+        }
+        cout<<"Location"<<i+1<<":";
+        while(q->next!=NULL)
+        {
+            cout<<q->data<<"\t";
+            q=q->next;
+        }
+        cout<<"\n"
+    }
+}
+
+void Hashing::search()
+{
+    long key;
+    cout<<"Enter number:";
+    cin>>key;
+    int loc=key%size;
+    node *q=new node;
+    q=hashtable[loc];
+    while(q->next!=NULL || q->data!=key)
+    {
+        q=q->next;
+    }
+    if(q->data==key) cout<<"Telephone number found";
+    else cout<<"Telephone number does not exist in the phonebook";
+}
