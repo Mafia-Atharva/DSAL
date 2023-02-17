@@ -7,10 +7,10 @@ struct node{
 };
 
 class Hashing{
-    private:
+    
+    public:
     int i;
     node *temp,*hashtable[size];
-    public:
     Hashing()
     {
         for(i=0;i<10;i++)
@@ -79,7 +79,7 @@ void Hashing::insert()
 void display()
 {
     node *q=new node;
-    for(i=0;i<size;i++)
+    for(int i=0;i<size;i++)
     {
         q=hashtable[i];
         if(q==NULL)
@@ -93,7 +93,7 @@ void display()
             cout<<q->data<<"\t";
             q=q->next;
         }
-        cout<<"\n"
+        cout<<"\n";
     }
 }
 
