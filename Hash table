@@ -51,7 +51,7 @@ int main() {
 
 void Hashing::menu()
 {
-    cout<<"***********************MENU***********************";
+    cout<<"\n***********************MENU***********************\n";
     cout<<"1.Insert telephone number\n2.Display Telephone numbers\n3.Search a number\n4.Stop\n";
     cout<<"Enter your choice:";
 }
@@ -76,7 +76,7 @@ void Hashing::insert()
     }
 }
 
-void display()
+void Hashing::display()
 {
     node *q=new node;
     for(int i=0;i<size;i++)
@@ -84,7 +84,7 @@ void display()
         q=hashtable[i];
         if(q==NULL)
         {
-            cout<<"Location"<<i+1<<":--";
+            cout<<"Location"<<i+1<<":--\n";
             continue;
         }
         cout<<"Location"<<i+1<<":";
@@ -109,6 +109,6 @@ void Hashing::search()
     {
         q=q->next;
     }
-    if(q->data==key) cout<<"Telephone number found";
-    else cout<<"Telephone number does not exist in the phonebook";
+    if(q->data==key) cout<<"\nTelephone number found";
+    else cout<<"\nTelephone number does not exist in the phonebook";
 }
